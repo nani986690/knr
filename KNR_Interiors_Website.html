@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KNR Interiors – Bring Elegance to Your Space</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --brand:#611f0a;
+  --brand-light:#a15a3f;
+  --brand-dark:#3c0f05;
+  --accent:#8c4f34;
+  --warm:#f4e7df;
+  --beige:#F6EEE7;
+  --beige2:#E9E0D8;
+  --cream:#FBF6F1;
+  --white:#FFFFFF;
+  --grey:#7A7169;
+  --grey-light:#D2CEC8;
+  --dark:#1A1814;
+  --text:#352f29;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Jost',sans-serif;
+  --radius:4px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--text);background:var(--warm);overflow-x:hidden}
+
+/* SCROLL PROGRESS */
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--brand),var(--brand-light));width:0%;z-index:9999;transition:width 0.1s}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.2rem 5%;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease;background:transparent}
+nav.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(97,31,10,0.2)}
+.logo{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--dark);letter-spacing:0.05em;text-decoration:none;display:flex;align-items:center;gap:0.75rem}
+.logo-img{height:38px;width:auto;display:block}
+.logo span{color:var(--brand)}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.3s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--brand);transition:width 0.3s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover,.nav-links a.active{color:var(--brand-dark)}
+.nav-cta{background:var(--brand);color:var(--white)!important;padding:0.55rem 1.4rem;letter-spacing:0.1em;font-size:0.75rem!important;transition:background 0.3s!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--brand-dark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:1.5px;background:var(--dark);transition:all 0.3s;display:block}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--dark);text-decoration:none;letter-spacing:0.05em;transition:color 0.3s}
+.mobile-menu a:hover{color:var(--brand)}
+
+/* PAGES */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--beige)}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--warm) 0%,var(--beige) 35%,var(--beige2) 100%)}
+.hero-pattern{position:absolute;inset:0;opacity:0.05;background-image:repeating-linear-gradient(45deg,var(--brand-light) 0,var(--brand-light) 1px,transparent 0,transparent 50%);background-size:20px 20px}
+.hero-content{position:relative;z-index:2;padding:0 5%;max-width:700px;padding-top:8rem}
+.hero-tag{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--brand);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
+.hero-tag::before{content:'';width:30px;height:1px;background:var(--brand)}
+.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.1;color:var(--dark);margin-bottom:1.5rem;letter-spacing:-0.01em}
+.hero h1 em{font-style:italic;color:var(--brand-dark)}
+.hero p{font-size:1rem;font-weight:300;line-height:1.8;color:var(--grey);max-width:480px;margin-bottom:2.5rem}
+.btn-primary{display:inline-block;background:var(--brand);color:var(--white);padding:1rem 2.5rem;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.3s;cursor:pointer;border:none;font-family:var(--sans);border-radius:999px}
+.btn-primary:hover{background:var(--brand-dark);transform:translateY(-2px)}
+.btn-outline{display:inline-block;border:1px solid var(--brand);color:var(--brand-dark);padding:0.95rem 2.5rem;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.3s;cursor:pointer;background:transparent;font-family:var(--sans);margin-left:1rem;border-radius:999px}
+.btn-outline:hover{background:var(--brand);color:var(--white)}
+.hero-right{position:absolute;right:0;top:0;bottom:0;width:45%;overflow:hidden}
+.hero-img-grid{height:100%;display:grid;grid-template-rows:1fr 1fr;gap:4px;padding:80px 0 0 4px}
+.hero-img{background:var(--beige2);overflow:hidden}
+.hero-img:nth-child(1){background:linear-gradient(135deg,#D4C5A9,#C4B08A);position:relative}
+.hero-img:nth-child(2){background:linear-gradient(135deg,#C8BAA0,#B8A882);position:relative}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.1))}
+.hero-img span{position:absolute;bottom:1rem;left:1rem;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.8);z-index:1}
+.hero-scroll{position:absolute;bottom:2.5rem;left:5%;display:flex;align-items:center;gap:0.8rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey);z-index:2}
+.scroll-line{width:40px;height:1px;background:var(--grey-light)}
+
+/* HIGHLIGHTS */
+.highlights{padding:4rem 5%;background:var(--dark);display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.highlight-item{padding:2.5rem;text-align:center;border-right:1px solid rgba(255,255,255,0.08)}
+.highlight-item:last-child{border-right:none}
+.highlight-num{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--brand);line-height:1;margin-bottom:0.5rem}
+.highlight-label{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);line-height:1.6}
+
+/* SECTION HEADER */
+.section-header{text-align:center;margin-bottom:4rem}
+.section-tag{font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--brand);margin-bottom:1rem;display:block}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--dark);line-height:1.2}
+.section-title em{font-style:italic;color:var(--brand-dark)}
+.section-line{width:50px;height:1px;background:var(--brand);margin:1.5rem auto 0}
+
+/* SERVICES */
+.services-section{padding:6rem 5%;background:var(--cream)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5px;background:var(--grey-light)}
+.service-card{background:var(--white);padding:2.8rem 2rem;transition:all 0.4s;position:relative;overflow:hidden;cursor:pointer}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--brand);transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{background:var(--beige)}
+.service-icon{font-size:1.5rem;margin-bottom:1.5rem;display:block}
+.service-card h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--dark);margin-bottom:0.8rem}
+.service-card p{font-size:0.85rem;color:var(--grey);line-height:1.8;font-weight:300}
+.service-arrow{margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:0.5rem;transition:gap 0.3s}
+.service-card:hover .service-arrow{gap:1rem}
+
+/* PRICING */
+.pricing-section{padding:6rem 5%;background:var(--white)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:900px;margin:0 auto}
+.pricing-card{border:1px solid var(--grey-light);padding:3rem;text-align:center;position:relative;transition:all 0.4s;cursor:pointer}
+.pricing-card:hover,.pricing-card.featured{border-color:var(--brand);transform:translateY(-4px)}
+.pricing-card.featured::before{content:'Most Popular';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--brand);color:var(--white);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 1.2rem;white-space:nowrap}
+.pricing-type{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:1rem}
+.pricing-name{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--dark);margin-bottom:0.5rem}
+.pricing-price{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:var(--dark);line-height:1;margin:1.5rem 0 0.3rem}
+.pricing-price sup{font-size:1.2rem;vertical-align:top;margin-top:0.8rem;display:inline-block}
+.pricing-period{font-size:0.75rem;color:var(--grey);margin-bottom:2rem;letter-spacing:0.05em}
+.pricing-features{list-style:none;text-align:left;margin-bottom:2.5rem}
+.pricing-features li{font-size:0.85rem;color:var(--text);padding:0.6rem 0;border-bottom:1px solid var(--beige);display:flex;align-items:center;gap:0.8rem;font-weight:300}
+.pricing-features li::before{content:'';width:4px;height:4px;background:var(--brand);flex-shrink:0}
+
+/* PORTFOLIO */
+.portfolio-section{padding:6rem 5%;background:var(--beige)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:1rem}
+.portfolio-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1}
+.portfolio-item:nth-child(1){grid-column:span 2;aspect-ratio:2/1}
+.portfolio-item:nth-child(4){grid-column:span 2;aspect-ratio:2/1}
+.portfolio-bg{width:100%;height:100%;transition:transform 0.6s ease;background-size:cover;background-position:center}
+.portfolio-item:hover .portfolio-bg{transform:scale(1.06)}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,24,20,0.75));opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:1.5rem}
+.portfolio-item:hover .portfolio-overlay{opacity:1}
+.portfolio-overlay h4{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--white)}
+.portfolio-overlay span{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand-light);display:block;margin-top:0.2rem}
+.p1{background:linear-gradient(135deg,#C9B89A 0%,#A89070 100%)}
+.p2{background:linear-gradient(135deg,#B0A08A 0%,#8E7A60 100%)}
+.p3{background:linear-gradient(135deg,#D4C4AA 0%,#B09878 100%)}
+.p4{background:linear-gradient(135deg,#A89878 0%,#8A7858 100%)}
+.p5{background:linear-gradient(135deg,#BEB09A 0%,#9C8870 100%)}
+
+/* REVIEWS */
+.reviews-section{padding:6rem 5%;background:var(--dark);overflow:hidden}
+.reviews-section .section-title{color:var(--white)}
+.reviews-section .section-tag{color:var(--brand-light)}
+.carousel-wrap{position:relative;margin:0 -5%}
+.carousel-track{display:flex;transition:transform 0.6s cubic-bezier(0.25,0.1,0.25,1);padding:0 5%}
+.review-card{min-width:360px;max-width:360px;margin-right:1.5rem;background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid rgba(97,31,10,0.2);padding:2.5rem;flex-shrink:0;transition:border-color 0.3s}
+.review-card:hover{border-color:rgba(97,31,10,0.5)}
+.stars{color:var(--brand);font-size:0.9rem;margin-bottom:1.2rem;letter-spacing:0.1em}
+.review-text{font-family:var(--serif);font-size:1.2rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:1.5rem}
+.reviewer{display:flex;align-items:center;gap:0.8rem}
+.reviewer-avatar{width:38px;height:38px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.9rem;font-weight:500;color:var(--white)}
+.reviewer-name{font-size:0.8rem;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.05em}
+.reviewer-loc{font-size:0.7rem;color:rgba(255,255,255,0.35);letter-spacing:0.08em}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:2.5rem}
+.carousel-btn{width:44px;height:44px;border:1px solid rgba(97,31,10,0.4);background:transparent;color:var(--brand);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:1.1rem}
+.carousel-btn:hover{background:var(--brand);color:var(--dark)}
+.carousel-dots{display:flex;gap:0.5rem}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all 0.3s}
+.dot.active{background:var(--brand);width:20px;border-radius:3px}
+
+/* ABOUT */
+.about-section{padding:6rem 5%;background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto}
+.about-visual{position:relative}
+.about-img{aspect-ratio:4/5;background:linear-gradient(135deg,#D4C5A9 0%,#B09878 100%);position:relative;overflow:hidden}
+.about-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--brand);color:var(--white);padding:1.5rem;text-align:center;width:110px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.about-badge strong{font-family:var(--serif);font-size:1.8rem;font-weight:300}
+.about-badge span{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;line-height:1.4;margin-top:0.2rem}
+.about-content{padding:2rem 0}
+.about-content .section-header{text-align:left;margin-bottom:2rem}
+.about-content .section-header .section-line{margin-left:0}
+.about-content p{font-size:0.9rem;line-height:1.9;color:var(--grey);margin-bottom:1.2rem;font-weight:300}
+.trust-items{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.trust-item{padding:1.2rem;border-left:2px solid var(--brand);padding-left:1rem}
+.trust-item h4{font-family:var(--serif);font-size:1rem;color:var(--dark);margin-bottom:0.2rem}
+.trust-item p{font-size:0.78rem;color:var(--grey);margin:0;line-height:1.5}
+
+/* CONTACT */
+.contact-section{padding:6rem 5%;background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;max-width:1000px;margin:0 auto;align-items:start}
+.contact-info h3{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--dark);margin-bottom:1.5rem;line-height:1.3}
+.contact-info p{font-size:0.88rem;color:var(--grey);line-height:1.8;margin-bottom:2rem;font-weight:300}
+.contact-detail{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--beige)}
+.contact-detail:last-of-type{border-bottom:none}
+.contact-icon{width:36px;height:36px;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+.contact-detail-text{font-size:0.85rem;color:var(--text)}
+.contact-detail-text strong{display:block;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);margin-bottom:0.2rem;font-weight:500}
+.contact-form{padding:2.5rem;background:var(--beige)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey);margin-bottom:0.5rem}
+.form-group input,.form-group textarea{width:100%;padding:0.85rem 1rem;background:var(--white);border:1px solid transparent;border-bottom:1px solid var(--grey-light);font-family:var(--sans);font-size:0.88rem;color:var(--dark);transition:border-color 0.3s;outline:none;appearance:none;-webkit-appearance:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--brand)}
+.form-group textarea{resize:vertical;min-height:100px}
+
+/* FOOTER */
+footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .logo{color:var(--white);display:block;margin-bottom:1rem}
+.footer-brand p{font-size:0.82rem;line-height:1.8;max-width:260px;font-weight:300}
+.footer-col h4{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:1.2rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:0.6rem}
+.footer-col ul li a{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;cursor:pointer}
+.footer-col ul li a:hover{color:var(--brand)}
+.footer-col address{font-style:normal;font-size:0.82rem;line-height:1.8}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:0.75rem;color:rgba(255,255,255,0.25)}
+
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;z-index:1000;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);transition:transform 0.3s;text-decoration:none;cursor:pointer}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:26px;height:26px;fill:white}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(2){transition-delay:0.1s}
+.fade-up:nth-child(3){transition-delay:0.2s}
+.fade-up:nth-child(4){transition-delay:0.3s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-right{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .portfolio-item:nth-child(1),.portfolio-item:nth-child(4){grid-column:span 1;aspect-ratio:1}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .highlights{grid-template-columns:1fr;gap:0}
+  .highlight-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .portfolio-grid{grid-template-columns:1fr}
+  .review-card{min-width:280px;max-width:280px}
+  .footer-grid{grid-template-columns:1fr}
+  .about-badge{right:0}
+  .trust-items{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="logo" onclick="showPage('home')"><img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="showPage('home')" class="active" data-page="home">Home</a></li>
+    <li><a onclick="showPage('about')" data-page="about">About</a></li>
+    <li><a onclick="showPage('services')" data-page="services">Services</a></li>
+    <li><a onclick="showPage('portfolio')" data-page="portfolio">Portfolio</a></li>
+    <li><a onclick="showPage('contact')" class="nav-cta" data-page="contact">Book Site Visit</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');toggleMenu()">Home</a>
+  <a onclick="showPage('about');toggleMenu()">About</a>
+  <a onclick="showPage('services');toggleMenu()">Services</a>
+  <a onclick="showPage('portfolio');toggleMenu()">Portfolio</a>
+  <a onclick="showPage('contact');toggleMenu()">Contact</a>
+</div>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Premium Interior Design</p>
+      <h1>Bring <em>Elegance</em><br>to Your Space</h1>
+      <p>Premium interiors with personalized designs, budget-friendly packages, and on-time delivery across Telangana & Andhra Pradesh.</p>
+      <button class="btn-primary" onclick="showPage('contact')">Book Free Site Visit</button>
+      <button class="btn-outline" onclick="showPage('portfolio')">View Portfolio</button>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-grid">
+        <div class="hero-img"><span>Living Room</span></div>
+        <div class="hero-img"><span>Bedroom</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights">
+    <div class="highlight-item fade-up">
+      <div class="highlight-num">5</div>
+      <div class="highlight-label">Years Free Service<br>Warranty</div>
+    </div>
+    <div class="highlight-item fade-up">
+      <div class="highlight-num">100%</div>
+      <div class="highlight-label">Vastu-Based<br>Designs</div>
+    </div>
+    <div class="highlight-item fade-up">
+      <div class="highlight-num">500+</div>
+      <div class="highlight-label">Satisfied<br>Clients</div>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="services-section">
+    <div class="section-header">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Our <em>Signature</em> Services</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <span class="service-icon">🏠</span>
+        <h3>Premium Home Interiors</h3>
+        <p>Complete home transformation with curated materials and bespoke furniture crafted to your taste.</p>
+        <div class="service-arrow">Explore →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🔑</span>
+        <h3>Turnkey Projects</h3>
+        <p>End-to-end project management — from concept to completion, delivered on time and within budget.</p>
+        <div class="service-arrow">Explore →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">☕</span>
+        <h3>Café Interiors</h3>
+        <p>Distinctive commercial spaces that create atmosphere, enhance brand identity, and invite guests to linger.</p>
+        <div class="service-arrow">Explore →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🎬</span>
+        <h3>Home Theatre Setup</h3>
+        <p>Immersive cinematic experiences designed into your home with superior acoustics and ambient lighting.</p>
+        <div class="service-arrow">Explore →</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section">
+    <div class="section-header">
+      <span class="section-tag">Transparent Pricing</span>
+      <h2 class="section-title">Budget-Friendly <em>Packages</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up">
+        <div class="pricing-type">Residential</div>
+        <div class="pricing-name">2 BHK Interiors</div>
+        <div class="pricing-price"><sup>₹</sup>4.5 <span style="font-size:1.4rem">Lakhs</span></div>
+        <div class="pricing-period">Complete Package · All Inclusive</div>
+        <ul class="pricing-features">
+          <li>Modular kitchen design</li>
+          <li>Master bedroom furniture</li>
+          <li>Living room & TV unit</li>
+          <li>100% Vastu compliance</li>
+          <li>5 years service warranty</li>
+          <li>On-time delivery</li>
+        </ul>
+        <button class="btn-outline" onclick="showPage('contact')" style="width:100%;text-align:center;display:block;margin-left:0">Book Now</button>
+      </div>
+      <div class="pricing-card featured fade-up">
+        <div class="pricing-type">Residential</div>
+        <div class="pricing-name">3 BHK Interiors</div>
+        <div class="pricing-price"><sup>₹</sup>5.5 <span style="font-size:1.4rem">Lakhs</span></div>
+        <div class="pricing-period">Complete Package · All Inclusive</div>
+        <ul class="pricing-features">
+          <li>Premium modular kitchen</li>
+          <li>All 3 bedrooms furnished</li>
+          <li>Living & dining design</li>
+          <li>100% Vastu compliance</li>
+          <li>5 years service warranty</li>
+          <li>Priority on-time delivery</li>
+        </ul>
+        <button class="btn-primary" onclick="showPage('contact')" style="width:100%;border:none">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO PREVIEW -->
+  <section class="portfolio-section">
+    <div class="section-header">
+      <span class="section-tag">Our Work</span>
+      <h2 class="section-title">Crafted with <em>Care</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item"><div class="portfolio-bg p1"></div><div class="portfolio-overlay"><div><h4>Modern Living Room</h4><span>2BHK · Hyderabad</span></div></div></div>
+      <div class="portfolio-item"><div class="portfolio-bg p2"></div><div class="portfolio-overlay"><div><h4>Master Bedroom</h4><span>3BHK · Vijayawada</span></div></div></div>
+      <div class="portfolio-item"><div class="portfolio-bg p3"></div><div class="portfolio-overlay"><div><h4>Modular Kitchen</h4><span>Turnkey · Warangal</span></div></div></div>
+      <div class="portfolio-item"><div class="portfolio-bg p4"></div><div class="portfolio-overlay"><div><h4>Premium Café</h4><span>Commercial · Guntur</span></div></div></div>
+      <div class="portfolio-item"><div class="portfolio-bg p5"></div><div class="portfolio-overlay"><div><h4>Home Theatre</h4><span>Luxury · Tirupati</span></div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <button class="btn-outline" onclick="showPage('portfolio')">View All Projects</button>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="section-header">
+      <span class="section-tag">Testimonials</span>
+      <h2 class="section-title" style="color:var(--white)">What Our Clients <em>Say</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="carousel-wrap" id="carousel">
+      <div class="carousel-track" id="track">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Amazing work! Delivered exactly what we imagined — the attention to detail is extraordinary."</p>
+          <div class="reviewer"><div class="reviewer-avatar">PR</div><div><div class="reviewer-name">Priya Reddy</div><div class="reviewer-loc">3BHK · Hyderabad</div></div></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Very professional and on-time execution. Our home looks like a magazine spread now!"</p>
+          <div class="reviewer"><div class="reviewer-avatar">SK</div><div><div class="reviewer-name">Suresh Kumar</div><div class="reviewer-loc">2BHK · Vijayawada</div></div></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Loved the vastu-based design and finishing quality. KNR Interiors truly exceeded our expectations."</p>
+          <div class="reviewer"><div class="reviewer-avatar">AM</div><div><div class="reviewer-name">Anitha Murthy</div><div class="reviewer-loc">3BHK · Guntur</div></div></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"The café they designed for us is now the talk of the town. Creative, functional, and beautiful."</p>
+          <div class="reviewer"><div class="reviewer-avatar">VR</div><div><div class="reviewer-name">Venkat Rao</div><div class="reviewer-loc">Café · Warangal</div></div></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Transparent pricing, no hidden costs, and the team was courteous throughout. Highly recommend!"</p>
+          <div class="reviewer"><div class="reviewer-avatar">LD</div><div><div class="reviewer-name">Lakshmi Devi</div><div class="reviewer-loc">2BHK · Tirupati</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn">&#8592;</button>
+      <div class="carousel-dots" id="dots"></div>
+      <button class="carousel-btn" id="nextBtn">&#8594;</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div style="padding:9rem 5% 6rem;background:var(--cream)">
+    <div class="about-grid">
+      <div class="about-visual fade-up">
+        <div class="about-img"></div>
+        <div class="about-badge"><strong>10+</strong><span>Years of Excellence</span></div>
+      </div>
+      <div class="about-content fade-up">
+        <div class="section-header">
+          <span class="section-tag">Our Story</span>
+          <h2 class="section-title">Design With <em>Purpose</em></h2>
+          <div class="section-line"></div>
+        </div>
+        <p>KNR Interiors was born from a simple belief: every home deserves to be beautiful, and every family deserves a space that truly feels like their own. Founded by Jagadeeswar Reddy Karna, our studio has transformed hundreds of homes across Telangana and Andhra Pradesh.</p>
+        <p>We blend timeless aesthetics with Vastu principles to create spaces that are not just visually stunning, but also filled with positive energy, peace, and harmony. Our approach is deeply personalized — we listen, we plan, and we deliver beyond expectations.</p>
+        <p>From a 2BHK apartment to a luxury villa, every project receives the same level of dedication, craftsmanship, and care. Budget-friendly doesn't mean compromising on quality — it means smarter design.</p>
+        <div class="trust-items">
+          <div class="trust-item"><h4>Trusted Quality</h4><p>Premium materials from verified suppliers only</p></div>
+          <div class="trust-item"><h4>On-Time Delivery</h4><p>We honour our commitments, always on schedule</p></div>
+          <div class="trust-item"><h4>5-Year Warranty</h4><p>Free service & support for five full years</p></div>
+          <div class="trust-item"><h4>Vastu Expertise</h4><p>100% Vastu-compliant designs for positivity</p></div>
+        </div>
+        <div style="margin-top:2rem">
+          <button class="btn-primary" onclick="showPage('contact')">Start Your Project</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES PAGE -->
+<div class="page" id="page-services">
+  <div style="padding:9rem 5% 6rem;background:var(--cream)">
+    <div class="section-header">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title">Our <em>Complete</em> Services</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="services-grid" style="max-width:1100px;margin:0 auto">
+      <div class="service-card fade-up">
+        <span class="service-icon">🏠</span>
+        <h3>Premium Home Interiors</h3>
+        <p>Complete residential transformation — modular kitchens, wardrobes, false ceilings, lighting, flooring, and custom furniture. Every detail considered, every space optimised for beauty and function.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🔑</span>
+        <h3>Turnkey Projects</h3>
+        <p>Hassle-free end-to-end execution. We manage everything — materials, labour, timelines, and quality checks — so you receive a ready-to-move-in home without any stress.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">☕</span>
+        <h3>Café & Commercial</h3>
+        <p>Unique commercial spaces that reflect your brand identity. We design cafés, restaurants, and retail stores that attract customers and create memorable experiences.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🎬</span>
+        <h3>Home Theatre Setup</h3>
+        <p>Experience cinema at home. We design acoustically treated, visually stunning home theatre rooms with premium AV integration and bespoke ambient lighting.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">✦</span>
+        <h3>Vastu Consultation</h3>
+        <p>Align your living spaces with ancient Vastu Shastra principles for peace, positivity, and prosperity. Our experts guide every design decision for holistic harmony.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🪑</span>
+        <h3>Custom Furniture</h3>
+        <p>Bespoke furniture crafted to your exact specifications, using premium woods, finishes, and hardware. Unique pieces that define your space.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <button class="btn-primary" onclick="showPage('contact')">Book Free Consultation</button>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO PAGE -->
+<div class="page" id="page-portfolio">
+  <div style="padding:9rem 5% 6rem;background:var(--beige)">
+    <div class="section-header">
+      <span class="section-tag">Our Portfolio</span>
+      <h2 class="section-title">Stories <em>Told</em> in Spaces</h2>
+      <div class="section-line"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;max-width:1100px;margin:0 auto">
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p1"></div><div class="portfolio-overlay"><div><h4>Modern Living Room</h4><span>2BHK · Hyderabad</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p2"></div><div class="portfolio-overlay"><div><h4>Master Bedroom</h4><span>3BHK · Vijayawada</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p3"></div><div class="portfolio-overlay"><div><h4>Modular Kitchen</h4><span>Turnkey · Warangal</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p4"></div><div class="portfolio-overlay"><div><h4>Premium Café</h4><span>Commercial · Guntur</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p5"></div><div class="portfolio-overlay"><div><h4>Home Theatre</h4><span>Luxury · Tirupati</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#C0AE94,#9E8A6C)"></div><div class="portfolio-overlay"><div><h4>Kids Bedroom</h4><span>2BHK · Nellore</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#D0C0A8,#AE9A80)"></div><div class="portfolio-overlay"><div><h4>Dining Space</h4><span>3BHK · Karimnagar</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#BAA88E,#988466)"></div><div class="portfolio-overlay"><div><h4>Study Room</h4><span>Turnkey · Kurnool</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#CAB89E,#A89076)"></div><div class="portfolio-overlay"><div><h4>Balcony Design</h4><span>2BHK · Secunderabad</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page" id="page-contact">
+  <div style="padding:9rem 5% 6rem;background:var(--white)">
+    <div class="section-header">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Begin Your <em>Journey</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Let's Create Your Dream Interior Together</h3>
+        <p>Contact us today for a free site visit. Our team will understand your vision, offer expert guidance, and provide a transparent, no-obligation quote.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text"><strong>Phone</strong>+91 97043 78870</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">👤</div>
+          <div class="contact-detail-text"><strong>Contact Person</strong>Jagadeeswar Reddy Karna</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text"><strong>Service Area</strong>Telangana & Andhra Pradesh</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">⏰</div>
+          <div class="contact-detail-text"><strong>Working Hours</strong>Mon – Sat, 9 AM – 7 PM</div>
+        </div>
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--beige);border-left:3px solid var(--brand)">
+          <p style="font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--text);line-height:1.7;margin:0">"We don't just design interiors — we craft experiences that elevate everyday living."</p>
+          <p style="font-size:0.75rem;color:var(--brand);margin-top:0.5rem;letter-spacing:0.1em;text-transform:uppercase">— Jagadeeswar Reddy Karna</p>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <p style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:1.5rem">Book Your Free Site Visit</p>
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 00000 00000"></div>
+        <div class="form-group"><label>City</label><input type="text" placeholder="Your city in Telangana / AP"></div>
+        <div class="form-group"><label>Project Type</label><input type="text" placeholder="2BHK / 3BHK / Café / Other"></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your dream interior…"></textarea></div>
+        <button class="btn-primary" style="width:100%;border:none;padding:1.1rem" onclick="alert('Thank you! Jagadeeswar will contact you within 24 hours.')">Send Message & Book Visit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" onclick="showPage('home')"><img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img"></a>
+      <p>Premium interior design services across Telangana & Andhra Pradesh. Bringing elegance, Vastu harmony, and timeless beauty to every space.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('about')">About Us</a></li>
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <address>
+        <p style="margin-bottom:0.5rem">Jagadeeswar Reddy Karna</p>
+        <p style="margin-bottom:0.5rem">+91 97043 78870</p>
+        <p style="margin-bottom:0.5rem">Telangana &amp; Andhra Pradesh</p>
+        <p style="color:var(--brand);margin-top:1rem;font-size:0.75rem;letter-spacing:0.1em">5 YEARS FREE SERVICE WARRANTY</p>
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 KNR Interiors. All rights reserved.</p>
+    <p>Designed with ♥ for elegant living</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-float" href="https://wa.me/919704378870" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// PAGE NAVIGATION
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('[data-page]').forEach(a=>{
+    a.classList.toggle('active',a.dataset.page===name);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(()=>observeFadeUps(),100);
+}
+
+// NAVBAR SCROLL
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.classList.toggle('scrolled',window.scrollY>50);
+  const h=document.documentElement;
+  const pct=(window.scrollY/(h.scrollHeight-h.clientHeight))*100;
+  document.getElementById('progress-bar').style.width=pct+'%';
+});
+
+// HAMBURGER
+function toggleMenu(){
+  const h=document.getElementById('hamburger');
+  const m=document.getElementById('mobileMenu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+
+// FADE UP OBSERVER
+function observeFadeUps(){
+  const items=document.querySelectorAll('.fade-up:not(.visible)');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.1});
+  items.forEach(i=>obs.observe(i));
+}
+observeFadeUps();
+
+// CAROUSEL
+const track=document.getElementById('track');
+const dotsEl=document.getElementById('dots');
+const cards=track.querySelectorAll('.review-card');
+const total=cards.length;
+let current=0;
+let autoPlay;
+
+function getVisible(){return window.innerWidth<680?1:window.innerWidth<1000?2:3;}
+function createDots(){
+  dotsEl.innerHTML='';
+  const vis=getVisible();
+  const pages=Math.ceil(total/vis);
+  for(let i=0;i<pages;i++){
+    const d=document.createElement('div');
+    d.className='dot'+(i===0?' active':'');
+    d.onclick=()=>goTo(i);
+    dotsEl.appendChild(d);
+  }
+}
+function goTo(idx){
+  const vis=getVisible();
+  const pages=Math.ceil(total/vis);
+  current=Math.max(0,Math.min(idx,pages-1));
+  const cardW=cards[0].offsetWidth+24;
+  track.style.transform=`translateX(-${current*vis*cardW}px)`;
+  dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+}
+document.getElementById('nextBtn').onclick=()=>{
+  const vis=getVisible();
+  goTo((current+1)%Math.ceil(total/vis));
+  resetAuto();
+};
+document.getElementById('prevBtn').onclick=()=>{
+  const vis=getVisible();
+  const pages=Math.ceil(total/vis);
+  goTo((current-1+pages)%pages);
+  resetAuto();
+};
+function resetAuto(){clearInterval(autoPlay);autoPlay=setInterval(()=>{const vis=getVisible();goTo((current+1)%Math.ceil(total/vis));},3500);}
+track.addEventListener('mouseenter',()=>clearInterval(autoPlay));
+track.addEventListener('mouseleave',()=>resetAuto());
+createDots();
+resetAuto();
+window.addEventListener('resize',()=>{createDots();goTo(0);});
+</script>
+</body>
+</html>
