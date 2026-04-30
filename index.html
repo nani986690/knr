@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KNR Interiors – Bring Elegance to Your Space</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -100,11 +101,11 @@ nav.scrolled{background:var(--brand);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(9
 /* SERVICES */
 .services-section{padding:6rem 5%;background:var(--cream)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5px;background:var(--grey-light)}
-.service-card{background:var(--white);padding:2.8rem 2rem;transition:all 0.4s;position:relative;overflow:hidden;cursor:pointer}
+.service-card{background:var(--white);padding:2.8rem 2rem;transition:all 0.4s;position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;min-height:280px}
 .service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--brand);transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
 .service-card:hover::before{transform:scaleX(1)}
 .service-card:hover{background:var(--beige)}
-.service-icon{font-size:1.5rem;margin-bottom:1.5rem;display:block}
+.service-icon{font-size:1.5rem;margin-bottom:1.5rem;display:none}
 .service-card h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--dark);margin-bottom:0.8rem}
 .service-card p{font-size:0.85rem;color:var(--grey);line-height:1.8;font-weight:300}
 .service-arrow{margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:0.5rem;transition:gap 0.3s}
@@ -230,7 +231,10 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .portfolio-item:nth-child(1),.portfolio-item:nth-child(4){grid-column:span 1;aspect-ratio:1}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:repeat(2, 1fr);gap:2rem!important}
+  
+  /* Tablet map adjustments */
+  .footer-col iframe{height:160px!important}
 }
 @media(max-width:680px){
   .nav-links{display:none}
@@ -239,9 +243,117 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
   .highlight-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
   .portfolio-grid{grid-template-columns:1fr}
   .review-card{min-width:280px;max-width:280px}
-  .footer-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem!important}
   .about-badge{right:0}
   .trust-items{grid-template-columns:1fr}
+  
+  /* Mobile Footer Responsive */
+  footer{padding:2.5rem 5% 1.5rem!important}
+  .footer-bottom{flex-direction:column;gap:1rem;text-align:center}
+  .footer-brand p{font-size:0.85rem}
+  .footer-col h4{margin-bottom:1.5rem;font-size:0.65rem}
+  .footer-col ul li{margin-bottom:0.6rem}
+  .footer-col ul li a{font-size:0.8rem}
+  
+  /* Mobile map fixes */
+  .footer-col iframe{height:180px!important;width:100%!important;max-width:100%!important;border-radius:6px}
+  .footer-col iframe + p{font-size:0.75rem;margin-top:0.8rem;text-align:center}
+  
+  /* Mobile footer brand adjustments */
+  .footer-brand{margin-bottom:2rem;text-align:center}
+  .footer-brand .logo-img{height:32px;width:auto;margin:0 auto}
+  
+  /* Mobile footer contact adjustments */
+  .footer-col address{gap:1rem}
+  .footer-col address div{display:flex;flex-direction:column;gap:0.3rem;text-align:center}
+  .footer-col address i{margin:0 auto 0.3rem;margin-bottom:0.3rem;width:16px;height:16px}
+  .footer-col address span{text-align:center}
+  
+  /* Mobile footer navigation adjustments */
+  .footer-col ul{text-align:center}
+  .footer-col ul li{display:inline-block;margin:0 0.8rem 0.6rem 0}
+  .footer-col ul li:last-child{margin-right:0}
+}
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 300px 220px 260px;
+  gap: 12px;
+}
+
+/* GRID STRUCTURE */
+.kitchen {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+.dining {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+}
+
+/* ITEM */
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* IMAGE */
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* TEXT CENTER */
+.grid-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+/* SOFT OVERLAY */
+.grid-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+}
+
+/* HOVER (SMOOTH, NOT AGGRESSIVE) */
+.grid-item:hover img {
+  transform: scale(1.05);
+}
+
+/* MOBILE FIX (IMPORTANT) */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .grid-item {
+    height: 220px;
+  }
+
+  .kitchen,
+  .dining {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .grid-text {
+    font-size: 22px;
+  }
 }
 </style>
 </head>
@@ -294,7 +406,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
   <!-- HIGHLIGHTS -->
   <section class="highlights">
     <div class="highlight-item fade-up">
-      <div class="highlight-num">5</div>
+      <div class="highlight-num">10</div>
       <div class="highlight-label">Years Free Service<br>Warranty</div>
     </div>
     <div class="highlight-item fade-up">
@@ -307,40 +419,40 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
     </div>
   </section>
 
-  <!-- SERVICES PREVIEW -->
-  <section class="services-section">
-    <div class="section-header">
-      <span class="section-tag">What We Offer</span>
-      <h2 class="section-title">Our <em>Signature</em> Services</h2>
-      <div class="section-line"></div>
+ <section class="services-section">
+  <div class="section-header">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title">Our <em>Signature</em> Services</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- BIG -->
+    <div class="grid-item kitchen">
+      <img src="https://uploads.onecompiler.io/44544cwde/44mvdgyhc/1000397513.jpg">
+      <div class="grid-text">INTERIORS</div>
     </div>
-    <div class="services-grid">
-      <div class="service-card fade-up">
-        <span class="service-icon">🏠</span>
-        <h3>Premium Home Interiors</h3>
-        <p>Complete home transformation with curated materials and bespoke furniture crafted to your taste.</p>
-        <div class="service-arrow">Explore →</div>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-icon">🔑</span>
-        <h3>Turnkey Projects</h3>
-        <p>End-to-end project management — from concept to completion, delivered on time and within budget.</p>
-        <div class="service-arrow">Explore →</div>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-icon">☕</span>
-        <h3>Café Interiors</h3>
-        <p>Distinctive commercial spaces that create atmosphere, enhance brand identity, and invite guests to linger.</p>
-        <div class="service-arrow">Explore →</div>
-      </div>
-      <div class="service-card fade-up">
-        <span class="service-icon">🎬</span>
-        <h3>Home Theatre Setup</h3>
-        <p>Immersive cinematic experiences designed into your home with superior acoustics and ambient lighting.</p>
-        <div class="service-arrow">Explore →</div>
-      </div>
+
+    <!-- SMALL -->
+    <div class="grid-item">
+      <img src="https://uploads.onecompiler.io/44544cwde/44mvdgyhc/1000397514.jpg">
+      <div class="grid-text">TURNKEY</div>
     </div>
-  </section>
+
+    <div class="grid-item">
+      <img src="https://uploads.onecompiler.io/44544cwde/44mvdgyhc/1000397518.webp">
+      <div class="grid-text">CAFE</div>
+    </div>
+
+    <!-- FULL -->
+    <div class="grid-item dining">
+      <img src="https://uploads.onecompiler.io/44544cwde/44mvdgyhc/1000397522.jpg">
+      <div class="grid-text">HOME THEATER</div>
+    </div>
+
+  </div>
+</section>
 
   <!-- PRICING -->
   <section class="pricing-section">
@@ -360,7 +472,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
           <li>Master bedroom furniture</li>
           <li>Living room & TV unit</li>
           <li>100% Vastu compliance</li>
-          <li>5 years service warranty</li>
+          <li>10 years service warranty</li>
           <li>On-time delivery</li>
         </ul>
         <button class="btn-outline" onclick="showPage('contact')" style="width:100%;text-align:center;display:block;margin-left:0">Book Now</button>
@@ -375,7 +487,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
           <li>All 3 bedrooms furnished</li>
           <li>Living & dining design</li>
           <li>100% Vastu compliance</li>
-          <li>5 years service warranty</li>
+          <li>10 years service warranty</li>
           <li>Priority on-time delivery</li>
         </ul>
         <button class="btn-primary" onclick="showPage('contact')" style="width:100%;border:none">Book Now</button>
@@ -391,10 +503,11 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
       <div class="section-line"></div>
     </div>
     <div class="portfolio-grid">
-      <div class="portfolio-item"><div class="portfolio-bg p1"></div><div class="portfolio-overlay"><div><h4>Modern Living Room</h4><span>2BHK · Hyderabad</span></div></div></div>
-      <div class="portfolio-item"><div class="portfolio-bg p2"></div><div class="portfolio-overlay"><div><h4>Master Bedroom</h4><span>3BHK · Vijayawada</span></div></div></div>
-      <div class="portfolio-item"><div class="portfolio-bg p3"></div><div class="portfolio-overlay"><div><h4>Modular Kitchen</h4><span>Turnkey · Warangal</span></div></div></div>
+      <div class="portfolio-item"><div class="portfolio-bg" style="background-image:url('https://uploads.onecompiler.io/42u9xvqj6/44mpkaj2u/ChatGPT%20Image%20Apr%2028,%202026,%2003_38_15%20PM.png');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Modern Living Room</h4></div></div></div>
+      <div class="portfolio-item"><div class="portfolio-bg" style="background-image:url('https://uploads.onecompiler.io/42u9xvqj6/44muz8w49/Parkside%2027_Angle%20Vale_Bedroom_Inspiration_1.jpg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Master Bedroom</h4></div></div></div>
+      <div class="portfolio-item"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.08.07.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Modular Kitchen</h4></div></div></div>
     </div>
+
     <div style="text-align:center;margin-top:2.5rem">
       <button class="btn-outline" onclick="showPage('portfolio')">View All Projects</button>
     </div>
@@ -465,7 +578,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
         <div class="trust-items">
           <div class="trust-item"><h4>Trusted Quality</h4><p>Premium materials from verified suppliers only</p></div>
           <div class="trust-item"><h4>On-Time Delivery</h4><p>We honour our commitments, always on schedule</p></div>
-          <div class="trust-item"><h4>5-Year Warranty</h4><p>Free service & support for five full years</p></div>
+          <div class="trust-item"><h4>10-Year Warranty</h4><p>Free service & support for ten full years</p></div>
           <div class="trust-item"><h4>Vastu Expertise</h4><p>100% Vastu-compliant designs for positivity</p></div>
         </div>
         <div style="margin-top:2rem">
@@ -521,6 +634,48 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
         <p>Bespoke furniture crafted to your exact specifications, using premium woods, finishes, and hardware. Unique pieces that define your space.</p>
         <div class="service-arrow">Get Estimate →</div>
       </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🛠️</span>
+        <h3>E-Service & Maintenance</h3>
+        <p>Comprehensive after-sales support with regular maintenance, repairs, and service calls. Our dedicated team ensures your interiors remain perfect year-round.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🪟</span>
+        <h3>Window Curtains & Wallpapers</h3>
+        <p>Custom-designed window curtains and premium wallpapers that elevate your interior aesthetics. Elegant solutions for every room and style preference.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">📍</span>
+        <h3>Zebra Blinds</h3>
+        <p>Modern zebra blinds with dual-layer sheer and solid stripes. Effortless light control, privacy, and contemporary style for living spaces and offices.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🎨</span>
+        <h3>PVC Blinds</h3>
+        <p>Durable PVC blinds offering excellent moisture resistance, easy maintenance, and sleek modern aesthetics. Perfect for kitchens, bathrooms, and commercial spaces.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">⬆️</span>
+        <h3>Roller Blinds</h3>
+        <p>Clean, minimalist roller blinds with smooth operation and varied fabric options. Maximizes space, enhances décor, and provides superior light and privacy control.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">⚡</span>
+        <h3>Motorized Curtains</h3>
+        <p>Smart motorized curtains with remote or app control for ultimate convenience. Automated light management and contemporary luxury for your home.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🎪</span>
+        <h3>Customised Wallpapers</h3>
+        <p>Bespoke wallpaper designs crafted to match your unique style and home décor. From classic patterns to modern designs, we bring your vision to life.</p>
+        <div class="service-arrow">Get Estimate →</div>
+      </div>
     </div>
     <div style="text-align:center;margin-top:3rem">
       <button class="btn-primary" onclick="showPage('contact')">Book Free Consultation</button>
@@ -567,83 +722,208 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
 
 <!-- CONTACT PAGE -->
 <div class="page" id="page-contact">
-  <div style="padding:9rem 5% 6rem;background:var(--white)">
+  <!-- Lucide Icons Script -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <section class="contact-section" style="padding-top: 10rem;">
     <div class="section-header">
       <span class="section-tag">Get In Touch</span>
       <h2 class="section-title">Begin Your <em>Journey</em></h2>
       <div class="section-line"></div>
     </div>
+
     <div class="contact-grid">
+      <!-- Left Side: Info -->
       <div class="contact-info fade-up">
         <h3>Let's Create Your Dream Interior Together</h3>
         <p>Contact us today for a free site visit. Our team will understand your vision, offer expert guidance, and provide a transparent, no-obligation quote.</p>
+        
         <div class="contact-detail">
-          <div class="contact-icon">📞</div>
-          <div class="contact-detail-text"><strong>Phone</strong>+91 97043 78870</div>
+          <div class="contact-icon" style="color: var(--brand);">
+            <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Phone</strong>
+            +91 97043 78870
+          </div>
         </div>
+
         <div class="contact-detail">
-          <div class="contact-icon">👤</div>
-          <div class="contact-detail-text"><strong>Contact Person</strong>Jagadeeswar Reddy Karna</div>
+          <div class="contact-icon" style="color: var(--brand);">
+            <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Contact Person</strong>
+            Jagadeeswar Reddy Karna
+          </div>
         </div>
+
         <div class="contact-detail">
-          <div class="contact-icon">📍</div>
-          <div class="contact-detail-text"><strong>Service Area</strong>Telangana & Andhra Pradesh</div>
+          <div class="contact-icon" style="color: var(--brand);">
+            <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Service Area</strong>
+            Telangana & Andhra Pradesh
+          </div>
         </div>
+
         <div class="contact-detail">
-          <div class="contact-icon">⏰</div>
-          <div class="contact-detail-text"><strong>Working Hours</strong>Mon – Sat, 9 AM – 7 PM</div>
+          <div class="contact-icon" style="color: var(--brand);">
+            <i data-lucide="calendar-days" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Working Hours</strong>
+            Mon – Sat, 9 AM – 7 PM
+          </div>
         </div>
-        <div style="margin-top:2rem;padding:1.5rem;background:var(--beige);border-left:3px solid var(--brand)">
-          <p style="font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--text);line-height:1.7;margin:0">"We don't just design interiors — we craft experiences that elevate everyday living."</p>
-          <p style="font-size:0.75rem;color:var(--brand);margin-top:0.5rem;letter-spacing:0.1em;text-transform:uppercase">— Jagadeeswar Reddy Karna</p>
+
+        <!-- Thematic Quote Block -->
+        <div style="margin-top:2.5rem; padding:2rem; background:var(--beige); border-left:3px solid var(--brand); position: relative;">
+          <p style="font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--brand-dark); line-height:1.6; margin:0">
+            "We don't just design interiors — we craft experiences that elevate everyday living."
+          </p>
+          <p style="font-size:0.7rem; color:var(--brand); margin-top:1rem; letter-spacing:0.15em; text-transform:uppercase; font-weight: 500;">
+            — Jagadeeswar Reddy Karna
+          </p>
         </div>
       </div>
-      <div class="contact-form fade-up">
-        <p style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:1.5rem">Book Your Free Site Visit</p>
-        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
-        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 00000 00000"></div>
-        <div class="form-group"><label>City</label><input type="text" placeholder="Your city in Telangana / AP"></div>
-        <div class="form-group"><label>Project Type</label><input type="text" placeholder="2BHK / 3BHK / Café / Other"></div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your dream interior…"></textarea></div>
-        <button class="btn-primary" style="width:100%;border:none;padding:1.1rem" onclick="alert('Thank you! Jagadeeswar will contact you within 24 hours.')">Send Message & Book Visit</button>
+
+      <!-- Right Side: Form -->
+      <div class="contact-form fade-up" style="border-radius: var(--radius); border: 1px solid var(--beige2); box-shadow: 0 15px 40px rgba(0,0,0,0.03);">
+        <p style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--brand); margin-bottom:2rem; font-weight: 600;">
+          Book Your Free Site Visit
+        </p>
+        
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full Name">
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 00000 00000">
+          </div>
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" placeholder="Hyderabad / AP">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Project Type</label>
+          <input type="text" placeholder="2BHK / 3BHK / Café / Other">
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your dream interior…"></textarea>
+        </div>
+
+        <button class="btn-primary" style="width:100%; border:none; padding:1.2rem; border-radius: 0; margin-top: 1rem;" onclick="alert('Thank you! Jagadeeswar will contact you within 24 hours.')">
+          Send Message & Book Visit
+        </button>
       </div>
     </div>
-  </div>
+  </section>
+
+  <script>
+    // Refresh Lucide Icons whenever this page becomes active
+    lucide.createIcons();
+  </script>
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
+<footer style="background: var(--dark); padding: 5rem 5% 2rem; color: rgba(255,255,255,0.6);">
+  <div class="footer-grid" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto 4rem;">
+    
+    <!-- Brand Column -->
     <div class="footer-brand">
-      <a class="logo" onclick="showPage('home')"><img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img"></a>
-     <p style="color: black;">
-  Premium interior design services across Telangana & Andhra Pradesh. Bringing elegance, Vastu harmony, and timeless beauty to every space.
-</p>
+      <a class="logo" onclick="showPage('home')" style="cursor: pointer; margin-bottom: 1.5rem; display: block;">
+        <img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img" style="filter: brightness(0) invert(1);">
+      </a>
+      <p style="font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.5); font-weight: 300; margin-top: 1rem;">
+        Elevating lifestyles through bespoke interior design. We blend Vastu harmony with modern aesthetics across Telangana and Andhra Pradesh.
+      </p>
+      <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <!-- Social Icons with actual links -->
+        <a href="https://www.instagram.com/knr_interior_exterior?igsh=ZWZxNzdlZHVwYzlv" target="_blank" style="width: 35px; height: 35px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--brand-light); cursor: pointer; transition: all 0.3s; text-decoration: none;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+          <i data-lucide="instagram" style="width: 16px; height: 16px;"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1DEuw4gfH3/" target="_blank" style="width: 35px; height: 35px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--brand-light); cursor: pointer; transition: all 0.3s; text-decoration: none;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+          <i data-lucide="facebook" style="width: 16px; height: 16px;"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Links Column -->
     <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a onclick="showPage('home')">Home</a></li>
-        <li><a onclick="showPage('about')">About Us</a></li>
-        <li><a onclick="showPage('services')">Services</a></li>
-        <li><a onclick="showPage('portfolio')">Portfolio</a></li>
-        <li><a onclick="showPage('contact')">Contact</a></li>
+      <h4 style="font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-light); margin-bottom: 2rem;">Quick Navigation</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 0.8rem;"><a onclick="showPage('home')" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='var(--brand-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Home</a></li>
+        <li style="margin-bottom: 0.8rem;"><a onclick="showPage('about')" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='var(--brand-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Our Story</a></li>
+        <li style="margin-bottom: 0.8rem;"><a onclick="showPage('services')" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='var(--brand-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Services</a></li>
+        <li style="margin-bottom: 0.8rem;"><a onclick="showPage('portfolio')" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='var(--brand-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Portfolio</a></li>
+        <li style="margin-bottom: 0.8rem;"><a onclick="showPage('contact')" style="font-size: 0.85rem; color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='var(--brand-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a></li>
       </ul>
     </div>
+
+    <!-- Contact Column -->
     <div class="footer-col">
-      <h4>Contact</h4>
-      <address>
-        <p style="margin-bottom:0.5rem">Jagadeeswar Reddy Karna</p>
-        <p style="margin-bottom:0.5rem">+91 97043 78870</p>
-        <p style="margin-bottom:0.5rem">Telangana &amp; Andhra Pradesh</p>
-        <p style="color:var(--brand);margin-top:1rem;font-size:0.75rem;letter-spacing:0.1em">5 YEARS FREE SERVICE WARRANTY</p>
+      <h4 style="font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-light); margin-bottom: 2rem;">Get In Touch</h4>
+      <address style="font-style: normal; display: flex; flex-direction: column; gap: 1.2rem;">
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <i data-lucide="user" style="width: 14px; height: 14px; color: var(--brand-light); margin-top: 4px;"></i>
+          <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Jagadeeswar Reddy Karna</span>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <i data-lucide="phone" style="width: 14px; height: 14px; color: var(--brand-light); margin-top: 4px;"></i>
+          <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">+91 97043 78870</span>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <i data-lucide="map-pin" style="width: 14px; height: 14px; color: var(--brand-light); margin-top: 4px;"></i>
+          <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Telangana & Andhra Pradesh</span>
+        </div>
+        <div style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
+          <p style="color: var(--brand-light); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;">10 Years Service Warranty</p>
+        </div>
       </address>
     </div>
+
+    <!-- Map Column -->
+    <div class="footer-col">
+      <h4 style="font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-light); margin-bottom: 2rem;">Our Location</h4>
+      <div style="border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.123!2d78.456!3d17.456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2zMTfCsDI3JzI0LjAiTiA3OMKwMjcnMjQuMCJF!5e0!3m2!1sen!2sin!4v1234567890!5m2!1sen!2sin" 
+          width="100%" 
+          height="200" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1rem; text-align: center;">
+        Serving Telangana & Andhra Pradesh
+      </p>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 KNR Interiors. All rights reserved.</p>
-    <p>Designed with ♥ for elegant living</p>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
+    <p style="font-size: 0.75rem; color: rgba(255,255,255,0.3);">© 2026 KNR Interiors. Crafted with precision.</p>
+    <div style="display: flex; gap: 2rem;">
+      <p style="font-size: 0.75rem; color: rgba(255,255,255,0.3); font-family: var(--serif); font-style: italic;">Designed for elegant living</p>
+    </div>
   </div>
 </footer>
+
+<script>
+  // Ensure icons load in the footer
+  lucide.createIcons();
+</script>
 
 <!-- WHATSAPP FLOAT -->
 <a class="whatsapp-float" href="https://wa.me/919704378870" target="_blank" title="Chat on WhatsApp">
