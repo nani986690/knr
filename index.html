@@ -32,19 +32,19 @@ body{font-family:var(--sans);color:var(--text);background:var(--warm);overflow-x
 #progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--brand),var(--brand-light));width:0%;z-index:9999;transition:width 0.1s}
 
 /* NAVBAR */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.2rem 5%;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease;background:transparent}
-nav.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(97,31,10,0.2)}
-.logo{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--dark);letter-spacing:0.05em;text-decoration:none;display:flex;align-items:center;gap:0.75rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.2rem 5%;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease;background:var(--brand);box-shadow:0 1px 0 rgba(97,31,10,0.1)}
+nav.scrolled{background:var(--brand);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(97,31,10,0.2)}
+.logo{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--white);letter-spacing:0.05em;text-decoration:none;display:flex;align-items:center;gap:0.75rem}
 .logo-img{height:38px;width:auto;display:block}
-.logo span{color:var(--brand)}
+.logo span{color:var(--white)}
 .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
-.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.3s;position:relative;padding-bottom:4px}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--brand);transition:width 0.3s}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);text-decoration:none;transition:color 0.3s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--white);transition:width 0.3s}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%}
-.nav-links a:hover,.nav-links a.active{color:var(--brand-dark)}
-.nav-cta{background:var(--brand);color:var(--white)!important;padding:0.55rem 1.4rem;letter-spacing:0.1em;font-size:0.75rem!important;transition:background 0.3s!important}
+.nav-links a:hover,.nav-links a.active{color:var(--warm)}
+.nav-cta{background:var(--white);color:var(--brand)!important;padding:0.55rem 1.4rem;letter-spacing:0.1em;font-size:0.75rem!important;transition:all 0.3s!important}
 .nav-cta::after{display:none!important}
-.nav-cta:hover{background:var(--brand-dark)!important}
+.nav-cta:hover{background:#f2e5df!important}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{width:24px;height:1.5px;background:var(--dark);transition:all 0.3s;display:block}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
@@ -61,7 +61,7 @@ nav.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);paddin
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--beige)}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--warm) 0%,var(--beige) 35%,var(--beige2) 100%)}
+.hero-bg{position:absolute;inset:0;background-image:url("https://uploads.onecompiler.io/42u9xvqj6/44mpkaj2u/ChatGPT%20Image%20Apr%2028,%202026,%2003_38_15%20PM.png"),linear-gradient(135deg,var(--warm) 0%,var(--beige) 35%,var(--beige2) 100%);background-size:cover,cover;background-position:center center,center center;background-repeat:no-repeat,no-repeat;opacity:0.95}
 .hero-pattern{position:absolute;inset:0;opacity:0.05;background-image:repeating-linear-gradient(45deg,var(--brand-light) 0,var(--brand-light) 1px,transparent 0,transparent 50%);background-size:20px 20px}
 .hero-content{position:relative;z-index:2;padding:0 5%;max-width:700px;padding-top:8rem}
 .hero-tag{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--brand);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
@@ -250,7 +250,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
 
 <!-- NAVBAR -->
 <nav id="navbar">
-  <a class="logo" onclick="showPage('home')"><img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img"></a>
+  <a class="logo" onclick="showPage('home')"><img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/KNR%20LOGO%20ICON%202.png" alt="KNR Interiors logo" class="logo-img"></a>
   <ul class="nav-links" id="navLinks">
     <li><a onclick="showPage('home')" class="active" data-page="home">Home</a></li>
     <li><a onclick="showPage('about')" data-page="about">About</a></li>
@@ -276,19 +276,19 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
     <div class="hero-bg"></div>
     <div class="hero-pattern"></div>
     <div class="hero-content">
-      <p class="hero-tag">Premium Interior Design</p>
+      <p class="hero-tag" style="color: black; background: white;">Premium Interior Design</p>
       <h1>Bring <em>Elegance</em><br>to Your Space</h1>
-      <p>Premium interiors with personalized designs, budget-friendly packages, and on-time delivery across Telangana & Andhra Pradesh.</p>
+      <p style="color: white;">Premium interiors with personalized designs, budget-friendly packages, and on-time delivery across Telangana & Andhra Pradesh.</p>
       <button class="btn-primary" onclick="showPage('contact')">Book Free Site Visit</button>
       <button class="btn-outline" onclick="showPage('portfolio')">View Portfolio</button>
     </div>
     <div class="hero-right">
       <div class="hero-img-grid">
-        <div class="hero-img"><span>Living Room</span></div>
-        <div class="hero-img"><span>Bedroom</span></div>
+        <div class="hero-img" style="background-image:url('https://uploads.onecompiler.io/42u9xvqj6/44muz8w49/Living_-3-3.webp');background-size:cover;background-position:center"><span>Living Room</span></div>
+        <div class="hero-img" style="background-image:url('https://uploads.onecompiler.io/42u9xvqj6/44muz8w49/Parkside%2027_Angle%20Vale_Bedroom_Inspiration_1.jpg');background-size:cover;background-position:center"><span>Bedroom</span></div>
       </div>
     </div>
-    <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
+    
   </section>
 
   <!-- HIGHLIGHTS -->
@@ -394,8 +394,6 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
       <div class="portfolio-item"><div class="portfolio-bg p1"></div><div class="portfolio-overlay"><div><h4>Modern Living Room</h4><span>2BHK · Hyderabad</span></div></div></div>
       <div class="portfolio-item"><div class="portfolio-bg p2"></div><div class="portfolio-overlay"><div><h4>Master Bedroom</h4><span>3BHK · Vijayawada</span></div></div></div>
       <div class="portfolio-item"><div class="portfolio-bg p3"></div><div class="portfolio-overlay"><div><h4>Modular Kitchen</h4><span>Turnkey · Warangal</span></div></div></div>
-      <div class="portfolio-item"><div class="portfolio-bg p4"></div><div class="portfolio-overlay"><div><h4>Premium Café</h4><span>Commercial · Guntur</span></div></div></div>
-      <div class="portfolio-item"><div class="portfolio-bg p5"></div><div class="portfolio-overlay"><div><h4>Home Theatre</h4><span>Luxury · Tirupati</span></div></div></div>
     </div>
     <div style="text-align:center;margin-top:2.5rem">
       <button class="btn-outline" onclick="showPage('portfolio')">View All Projects</button>
@@ -539,15 +537,30 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
       <div class="section-line"></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;max-width:1100px;margin:0 auto">
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p1"></div><div class="portfolio-overlay"><div><h4>Modern Living Room</h4><span>2BHK · Hyderabad</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p2"></div><div class="portfolio-overlay"><div><h4>Master Bedroom</h4><span>3BHK · Vijayawada</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p3"></div><div class="portfolio-overlay"><div><h4>Modular Kitchen</h4><span>Turnkey · Warangal</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p4"></div><div class="portfolio-overlay"><div><h4>Premium Café</h4><span>Commercial · Guntur</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg p5"></div><div class="portfolio-overlay"><div><h4>Home Theatre</h4><span>Luxury · Tirupati</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#C0AE94,#9E8A6C)"></div><div class="portfolio-overlay"><div><h4>Kids Bedroom</h4><span>2BHK · Nellore</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#D0C0A8,#AE9A80)"></div><div class="portfolio-overlay"><div><h4>Dining Space</h4><span>3BHK · Karimnagar</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#BAA88E,#988466)"></div><div class="portfolio-overlay"><div><h4>Study Room</h4><span>Turnkey · Kurnool</span></div></div></div>
-      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background:linear-gradient(135deg,#CAB89E,#A89076)"></div><div class="portfolio-overlay"><div><h4>Balcony Design</h4><span>2BHK · Secunderabad</span></div></div></div>
+     
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.14%20(1).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 1</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.14.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 2</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.20%20(1).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 3</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.20%20(2).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 4</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.20%20(3).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 5</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.20.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 6</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.21%20(1).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 7</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.21%20(2).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 8</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.21.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 9</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.22%20(1).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 10</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.22%20(2).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 11</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.22%20(3).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 12</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.22.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 13</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.23%20(1).jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 14</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.05.23.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 15</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.07.33.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 16</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.07.41.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 17</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.07.43.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 18</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.08.02.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 19</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.08.07.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 20</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.10.31.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 21</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.25.58.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 22</h4><span>Residential · KNR</span></div></div></div>
+      <div class="portfolio-item fade-up" style="aspect-ratio:1"><div class="portfolio-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/nani986690/knr@main/WhatsApp%20Image%202026-04-27%20at%2021.26.22.jpeg');background-size:cover;background-position:center"></div><div class="portfolio-overlay"><div><h4>Project 23</h4><span>Residential · KNR</span></div></div></div>
     </div>
   </div>
 </div>
@@ -603,8 +616,9 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
   <div class="footer-grid">
     <div class="footer-brand">
       <a class="logo" onclick="showPage('home')"><img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img"></a>
-      <p>Premium interior design services across Telangana & Andhra Pradesh. Bringing elegance, Vastu harmony, and timeless beauty to every space.</p>
-    </div>
+     <p style="color: black;">
+  Premium interior design services across Telangana & Andhra Pradesh. Bringing elegance, Vastu harmony, and timeless beauty to every space.
+</p>
     <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
