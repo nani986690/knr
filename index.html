@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +51,15 @@ nav.scrolled{background:var(--brand);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(9
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.city-tab{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:50px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.55);cursor:pointer;transition:all 0.3s}
+.city-tab:hover{background:rgba(255,255,255,0.08);color:var(--white)}
+.city-tab.active{background:var(--brand);border-color:var(--brand);color:var(--white)}
+.cities-banner{background:var(--brand);padding:3rem 5%;text-align:center}
+.cities-banner h3{font-family:var(--serif);font-size:1.5rem;color:var(--white);margin-bottom:0.5rem;font-weight:400}
+.cities-banner p{color:rgba(255,255,255,0.85);font-size:0.9rem;margin-bottom:1.8rem}
+.cities-list{display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center;max-width:800px;margin:0 auto}
+.city-pill{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:var(--white);padding:0.45rem 1.1rem;border-radius:50px;font-size:0.8rem;font-family:var(--sans);letter-spacing:0.05em}
+@media(max-width:680px){.city-tab{font-size:0.65rem;padding:0.4rem 0.9rem}}
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--dark);text-decoration:none;letter-spacing:0.05em;transition:color 0.3s}
 .mobile-menu a:hover{color:var(--brand)}
@@ -432,6 +439,47 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
     </div>
   </section>
 
+  <!-- WHY CHOOSE US -->
+  <section class="why-choose-section" style="padding:6rem 5%;background:var(--white)">
+    <div class="section-header">
+      <span class="section-tag">Why Choose KNR</span>
+      <h2 class="section-title">Excellence in Every <em>Detail</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="why-choose-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1100px;margin:0 auto">
+      <div class="why-choose-item fade-up" style="text-align:center;padding:2rem;background:var(--beige);border-radius:8px;transition:all 0.3s">
+        <div style="width:60px;height:60px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--white);font-size:1.5rem">🏆</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--dark);margin-bottom:0.8rem">Premium Quality</h3>
+        <p style="font-size:0.9rem;color:var(--grey);line-height:1.6">We use only branded materials and hardware from verified suppliers, ensuring durability and luxury in every project.</p>
+      </div>
+      <div class="why-choose-item fade-up" style="text-align:center;padding:2rem;background:var(--beige);border-radius:8px;transition:all 0.3s">
+        <div style="width:60px;height:60px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--white);font-size:1.5rem">🎯</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--dark);margin-bottom:0.8rem">Personalized Approach</h3>
+        <p style="font-size:0.9rem;color:var(--grey);line-height:1.6">Every design is tailored to your lifestyle, preferences, and budget. No cookie-cutter solutions, only bespoke interiors.</p>
+      </div>
+      <div class="why-choose-item fade-up" style="text-align:center;padding:2rem;background:var(--beige);border-radius:8px;transition:all 0.3s">
+        <div style="width:60px;height:60px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--white);font-size:1.5rem">⏰</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--dark);margin-bottom:0.8rem">On-Time Delivery</h3>
+        <p style="font-size:0.9rem;color:var(--grey);line-height:1.6">We honor our commitments. Professional project management ensures your dream space is ready exactly when promised.</p>
+      </div>
+      <div class="why-choose-item fade-up" style="text-align:center;padding:2rem;background:var(--beige);border-radius:8px;transition:all 0.3s">
+        <div style="width:60px;height:60px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--white);font-size:1.5rem">🕉️</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--dark);margin-bottom:0.8rem">Vastu Expertise</h3>
+        <p style="font-size:0.9rem;color:var(--grey);line-height:1.6">100% Vastu-compliant designs that bring positive energy, peace, and prosperity to your living spaces.</p>
+      </div>
+      <div class="why-choose-item fade-up" style="text-align:center;padding:2rem;background:var(--beige);border-radius:8px;transition:all 0.3s">
+        <div style="width:60px;height:60px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--white);font-size:1.5rem">💰</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--dark);margin-bottom:0.8rem">Budget-Friendly</h3>
+        <p style="font-size:0.9rem;color:var(--grey);line-height:1.6">Luxury interiors that don't break the bank. Smart design solutions maximize value without compromising on quality.</p>
+      </div>
+      <div class="why-choose-item fade-up" style="text-align:center;padding:2rem;background:var(--beige);border-radius:8px;transition:all 0.3s">
+        <div style="width:60px;height:60px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--white);font-size:1.5rem">🔧</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--dark);margin-bottom:0.8rem">10-Year Warranty</h3>
+        <p style="font-size:0.9rem;color:var(--grey);line-height:1.6">Free service and maintenance for ten full years. Your satisfaction is our long-term commitment.</p>
+      </div>
+    </div>
+  </section>
+
  <section class="services-section">
   <div class="section-header">
     <span class="section-tag">What We Offer</span>
@@ -530,36 +578,99 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
   <section class="reviews-section">
     <div class="section-header">
       <span class="section-tag">Testimonials</span>
-      <h2 class="section-title" style="color:var(--white)">What Our Clients <em>Say</em></h2>
+      <h2 class="section-title" style="color:var(--white)">What Our Clients Say</h2>
       <div class="section-line"></div>
     </div>
+    <!-- City filter tabs -->
+    <div style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:2.5rem" id="cityTabs">
+      <button class="city-tab active" onclick="filterCity('all',this)">All Cities</button>
+      <button class="city-tab" onclick="filterCity('Hyderabad',this)"> Hyderabad</button>
+      <button class="city-tab" onclick="filterCity('Kadapa',this)"> Kadapa</button>
+      <button class="city-tab" onclick="filterCity('Bangalore',this)"> Bangalore</button>
+      <button class="city-tab" onclick="filterCity('Tirupati',this)"> Tirupati</button>
+    </div>
+
     <div class="carousel-wrap" id="carousel">
       <div class="carousel-track" id="track">
-        <div class="review-card">
+
+        <!-- HYDERABAD -->
+        <div class="review-card" data-city="Hyderabad">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Amazing work! Delivered exactly what we imagined — the attention to detail is extraordinary."</p>
-          <div class="reviewer"><div class="reviewer-avatar">PR</div><div><div class="reviewer-name">Priya Reddy</div><div class="reviewer-loc">3BHK · Hyderabad</div></div></div>
+          <p class="review-text">"KNR Interiors delivered an outstanding modular kitchen for our home. The design was modern, space-efficient, and executed with great precision. Highly recommended!"</p>
+          <div class="reviewer"><div class="reviewer-avatar">RK</div><div><div class="reviewer-name">Ramesh K.</div><div class="reviewer-loc">Modular Kitchen · Hyderabad</div></div></div>
         </div>
-        <div class="review-card">
+        <div class="review-card" data-city="Hyderabad">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Very professional and on-time execution. Our home looks like a magazine spread now!"</p>
-          <div class="reviewer"><div class="reviewer-avatar">SK</div><div><div class="reviewer-name">Suresh Kumar</div><div class="reviewer-loc">2BHK · Vijayawada</div></div></div>
+          <p class="review-text">"We are extremely happy with the wardrobe and TV unit designed by KNR Interiors. Their 3D design support helped us visualize everything perfectly before execution."</p>
+          <div class="reviewer"><div class="reviewer-avatar">SM</div><div><div class="reviewer-name">Swetha M.</div><div class="reviewer-loc">Wardrobe & TV Unit · Hyderabad</div></div></div>
         </div>
-        <div class="review-card">
+        <div class="review-card" data-city="Hyderabad">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Loved the vastu-based design and finishing quality. KNR Interiors truly exceeded our expectations."</p>
-          <div class="reviewer"><div class="reviewer-avatar">AM</div><div><div class="reviewer-name">Anitha Murthy</div><div class="reviewer-loc">3BHK · Guntur</div></div></div>
+          <p class="review-text">"Professional team, on-time delivery, and excellent finishing. KNR Interiors transformed our flat into a premium-looking space."</p>
+          <div class="reviewer"><div class="reviewer-avatar">VP</div><div><div class="reviewer-name">Vijay P.</div><div class="reviewer-loc">Full Flat · Hyderabad</div></div></div>
         </div>
-        <div class="review-card">
+        <div class="review-card" data-city="Hyderabad">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"The café they designed for us is now the talk of the town. Creative, functional, and beautiful."</p>
-          <div class="reviewer"><div class="reviewer-avatar">VR</div><div><div class="reviewer-name">Venkat Rao</div><div class="reviewer-loc">Café · Warangal</div></div></div>
+          <p class="review-text">"From material selection to final installation, everything was handled smoothly. Their use of branded plywood and hardware really shows in the durability."</p>
+          <div class="reviewer"><div class="reviewer-avatar">NR</div><div><div class="reviewer-name">Naveen R.</div><div class="reviewer-loc">Home Interiors · Hyderabad</div></div></div>
         </div>
-        <div class="review-card">
+        <div class="review-card" data-city="Hyderabad">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Transparent pricing, no hidden costs, and the team was courteous throughout. Highly recommend!"</p>
-          <div class="reviewer"><div class="reviewer-avatar">LD</div><div><div class="reviewer-name">Lakshmi Devi</div><div class="reviewer-loc">2BHK · Tirupati</div></div></div>
+          <p class="review-text">"Best interior service in Hyderabad. Affordable pricing with luxury output — exactly what we were looking for!"</p>
+          <div class="reviewer"><div class="reviewer-avatar">PD</div><div><div class="reviewer-name">Priya D.</div><div class="reviewer-loc">3BHK · Hyderabad</div></div></div>
         </div>
+
+        <!-- KADAPA -->
+        <div class="review-card" data-city="Kadapa">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"KNR Interiors did a fantastic job on our 2BHK interiors in Kadapa. Clean design, perfect measurements, and neat finishing."</p>
+          <div class="reviewer"><div class="reviewer-avatar">AK</div><div><div class="reviewer-name">Anand K.</div><div class="reviewer-loc">2BHK · Kadapa</div></div></div>
+        </div>
+        <div class="review-card" data-city="Kadapa">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Very supportive team with great ideas. Their modular concepts made our home look modern and elegant."</p>
+          <div class="reviewer"><div class="reviewer-avatar">SR</div><div><div class="reviewer-name">Sunitha R.</div><div class="reviewer-loc">Modular Interiors · Kadapa</div></div></div>
+        </div>
+
+        <!-- BANGALORE -->
+        <div class="review-card" data-city="Bangalore">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Amazing craftsmanship and attention to detail. KNR Interiors delivered exactly what they promised for our Bangalore apartment."</p>
+          <div class="reviewer"><div class="reviewer-avatar">MG</div><div><div class="reviewer-name">Mohan G.</div><div class="reviewer-loc">Apartment · Bangalore</div></div></div>
+        </div>
+        <div class="review-card" data-city="Bangalore">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Loved their modern designs and smart storage solutions. The team was very professional throughout the entire project."</p>
+          <div class="reviewer"><div class="reviewer-avatar">DL</div><div><div class="reviewer-name">Deepa L.</div><div class="reviewer-loc">2BHK · Bangalore</div></div></div>
+        </div>
+        <div class="review-card" data-city="Bangalore">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Excellent service and premium finish. Their 3D designs helped us finalize everything easily before work started."</p>
+          <div class="reviewer"><div class="reviewer-avatar">KS</div><div><div class="reviewer-name">Kiran S.</div><div class="reviewer-loc">3BHK · Bangalore</div></div></div>
+        </div>
+
+        <!-- TIRUPATI -->
+        <div class="review-card" data-city="Tirupati">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"KNR Interiors turned our house into a stylish and functional space. The modular kitchen and wardrobes are absolutely top-notch."</p>
+          <div class="reviewer"><div class="reviewer-avatar">LN</div><div><div class="reviewer-name">Lakshmi N.</div><div class="reviewer-loc">Full Home · Tirupati</div></div></div>
+        </div>
+        <div class="review-card" data-city="Tirupati">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Highly impressed with their creativity and execution. Everything was delivered on time without compromising on quality."</p>
+          <div class="reviewer"><div class="reviewer-avatar">BV</div><div><div class="reviewer-name">Balaji V.</div><div class="reviewer-loc">2BHK · Tirupati</div></div></div>
+        </div>
+        <div class="review-card" data-city="Tirupati">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Good pricing, great design, and smooth execution. One of the best interior services we've experienced in Tirupati."</p>
+          <div class="reviewer"><div class="reviewer-avatar">PR</div><div><div class="reviewer-name">Pradeep R.</div><div class="reviewer-loc">Flat Interiors · Tirupati</div></div></div>
+        </div>
+        <div class="review-card" data-city="Tirupati">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Their attention to detail and finishing is excellent. We are fully satisfied with the final outcome of our home."</p>
+          <div class="reviewer"><div class="reviewer-avatar">SS</div><div><div class="reviewer-name">Sridevi S.</div><div class="reviewer-loc">Home Interiors · Tirupati</div></div></div>
+        </div>
+
       </div>
     </div>
     <div class="carousel-controls">
@@ -585,7 +696,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
           <h2 class="section-title">Design With <em>Purpose</em></h2>
           <div class="section-line"></div>
         </div>
-        <p>KNR Interiors was born from a simple belief: every home deserves to be beautiful, and every family deserves a space that truly feels like their own. Founded by Jagadeeswar Reddy Karna, our studio has transformed hundreds of homes across Telangana and Andhra Pradesh.</p>
+        <p>KNR Interiors was born from a simple belief: every home deserves to be beautiful, and every family deserves a space that truly feels like their own. Founded by Jagadeeswar Reddy Karna, our studio has transformed hundreds of homes across Telangana,Andhra Pradesh and Banglore.</p>
         <p>We blend timeless aesthetics with Vastu principles to create spaces that are not just visually stunning, but also filled with positive energy, peace, and harmony. Our approach is deeply personalized — we listen, we plan, and we deliver beyond expectations.</p>
         <p>From a 2BHK apartment to a luxury villa, every project receives the same level of dedication, craftsmanship, and care. Budget-friendly doesn't mean compromising on quality — it means smarter design.</p>
         <div class="trust-items">
@@ -847,6 +958,8 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
   </script>
 </div>
 
+
+
 <!-- FOOTER -->
 <footer style="background: var(--dark); padding: 5rem 5% 2rem; color: rgba(255,255,255,0.6);">
   <div class="footer-grid" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto 4rem; align-items: start;">
@@ -857,7 +970,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
         <img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img" style="filter: brightness(0) invert(1);">
       </a>
       <p style="font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.5); font-weight: 300; margin-top: 1rem;">
-        Elevating lifestyles through bespoke interior design. We blend Vastu harmony with modern aesthetics across Telangana and Andhra Pradesh.
+        Elevating lifestyles through bespoke interior design. We blend Vastu harmony with modern aesthetics across Telangana,Andhra Pradesh Banglore.
       </p>
       <div style="margin-top: 2rem; display: flex; gap: 1rem;">
         <!-- Instagram -->
@@ -1040,6 +1153,24 @@ track.addEventListener('mouseleave',()=>resetAuto());
 createDots();
 resetAuto();
 window.addEventListener('resize',()=>{createDots();goTo(0);});
+
+// City filter
+function filterCity(city, btn){
+  document.querySelectorAll('.city-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('.review-card');
+  cards.forEach(c=>{
+    if(city==='all' || c.dataset.city===city){
+      c.style.display='';
+    } else {
+      c.style.display='none';
+    }
+  });
+  // Recalculate carousel after filter
+  total = Array.from(document.querySelectorAll('.review-card')).filter(c=>c.style.display!=='none').length;
+  goTo(0);
+  createDots();
+}
 </script>
 </body>
 </html>
