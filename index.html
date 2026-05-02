@@ -60,10 +60,53 @@ nav.scrolled{background:var(--brand);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(9
 .cities-list{display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center;max-width:800px;margin:0 auto}
 .city-pill{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:var(--white);padding:0.45rem 1.1rem;border-radius:50px;font-size:0.8rem;font-family:var(--sans);letter-spacing:0.05em}
 @media(max-width:680px){.city-tab{font-size:0.65rem;padding:0.4rem 0.9rem}}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--dark);text-decoration:none;letter-spacing:0.05em;transition:color 0.3s}
+
+/* MOBILE MENU – full-screen overlay */
+.mobile-menu{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:var(--cream);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+  padding:2rem;
+  opacity:0;
+  transform:translateY(-10px);
+  transition:opacity 0.35s ease, transform 0.35s ease;
+}
+.mobile-menu.open{
+  display:flex;
+  opacity:1;
+  transform:translateY(0);
+}
+.mobile-menu a{
+  font-family:var(--serif);
+  font-size:2.2rem;
+  font-weight:400;
+  color:var(--dark);
+  text-decoration:none;
+  letter-spacing:0.05em;
+  transition:color 0.3s;
+  cursor:pointer;
+}
 .mobile-menu a:hover{color:var(--brand)}
-.mobile-menu-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--dark);line-height:1;padding:0.5rem}
+.mobile-menu-close{
+  position:absolute;
+  top:1.5rem;
+  right:1.5rem;
+  background:none;
+  border:none;
+  font-size:2rem;
+  cursor:pointer;
+  color:var(--dark);
+  line-height:1;
+  padding:0.5rem;
+  transition:color 0.3s;
+}
+.mobile-menu-close:hover{color:var(--brand)}
 
 /* PAGES */
 .page{display:none;min-height:100vh}
@@ -381,7 +424,10 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
 
 <!-- NAVBAR -->
 <nav id="navbar">
-  <a class="logo" onclick="showPage('home')"><img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/KNR%20LOGO%20ICON%202.png" alt="KNR Interiors logo" class="logo-img"></a>
+  <a class="logo" onclick="showPage('home')">
+    <img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/KNR%20LOGO%20ICON%202.png" class="logo-img">
+  </a>
+
   <ul class="nav-links" id="navLinks">
     <li><a onclick="showPage('home')" class="active" data-page="home">Home</a></li>
     <li><a onclick="showPage('about')" data-page="about">About</a></li>
@@ -389,7 +435,10 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
     <li><a onclick="showPage('portfolio')" data-page="portfolio">Portfolio</a></li>
     <li><a onclick="showPage('contact')" class="nav-cta" data-page="contact">Book Site Visit</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
@@ -1070,18 +1119,35 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
 </a>
 
 <script>
-// PAGE NAVIGATION
+// ── SHARED: close mobile menu with animation ──────────────────────────────
+function closeMenu(){
+  const m=document.getElementById('mobileMenu');
+  const h=document.getElementById('hamburger');
+  if(!m||!m.classList.contains('open')) return;
+  m.style.opacity='0';
+  m.style.transform='translateY(-10px)';
+  setTimeout(()=>{
+    m.classList.remove('open');
+    m.style.opacity='';
+    m.style.transform='';
+  },300);
+  h.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ── PAGE NAVIGATION ───────────────────────────────────────────────────────
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   document.querySelectorAll('[data-page]').forEach(a=>{
     a.classList.toggle('active',a.dataset.page===name);
   });
+  closeMenu(); // always close menu on navigation
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(()=>observeFadeUps(),100);
 }
 
-// NAVBAR SCROLL
+// ── NAVBAR SCROLL ─────────────────────────────────────────────────────────
 window.addEventListener('scroll',()=>{
   const nav=document.getElementById('navbar');
   nav.classList.toggle('scrolled',window.scrollY>50);
@@ -1090,13 +1156,24 @@ window.addEventListener('scroll',()=>{
   document.getElementById('progress-bar').style.width=pct+'%';
 });
 
-// HAMBURGER
+// ── HAMBURGER TOGGLE ──────────────────────────────────────────────────────
 function toggleMenu(){
-  const h=document.getElementById('hamburger');
   const m=document.getElementById('mobileMenu');
-  h.classList.toggle('open');
-  m.classList.toggle('open');
+  if(m.classList.contains('open')){
+    closeMenu();
+  } else {
+    m.classList.add('open');
+    document.getElementById('hamburger').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
 }
+
+// Close menu when tapping the backdrop (outside menu links)
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('mobileMenu').addEventListener('click',function(e){
+    if(e.target===this) closeMenu();
+  });
+});
 
 // FADE UP OBSERVER
 function observeFadeUps(){
