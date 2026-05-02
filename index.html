@@ -160,7 +160,7 @@ nav.scrolled{background:var(--brand);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(9
 .service-icon{font-size:1.5rem;margin-bottom:1.5rem;display:none}
 .service-card h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--dark);margin-bottom:0.8rem}
 .service-card p{font-size:0.85rem;color:var(--grey);line-height:1.8;font-weight:300}
-.service-arrow{margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:0.5rem;transition:gap 0.3s}
+.service-arrow{margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:0.5rem;transition:gap 0.3s;cursor:pointer}
 .service-card:hover .service-arrow{gap:1rem}
 
 /* PRICING */
@@ -221,7 +221,12 @@ nav.scrolled{background:var(--brand);padding:0.8rem 5%;box-shadow:0 1px 0 rgba(9
 .about-section{padding:6rem 5%;background:var(--cream)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto}
 .about-visual{position:relative}
-.about-img{aspect-ratio:4/5;background:linear-gradient(135deg,#D4C5A9 0%,#B09878 100%);position:relative;overflow:hidden}
+.about-img{
+  aspect-ratio: 4/5;
+  background: url("https://uploads.onecompiler.io/44544cwde/44n37xfep/1000397925.png") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
 .about-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--brand);color:var(--white);padding:1.5rem;text-align:center;width:110px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .about-badge strong{font-family:var(--serif);font-size:1.8rem;font-weight:300}
 .about-badge span{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;line-height:1.4;margin-top:0.2rem}
@@ -459,7 +464,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
     <div class="hero-content">
       <p class="hero-tag" style="color: black; background: white;">Premium Interior Design</p>
       <h1>Bring <em>Elegance</em><br>to Your Space</h1>
-      <p style="color: white;">Premium interiors with personalized designs, budget-friendly packages, and on-time delivery across Telangana & Andhra Pradesh.</p>
+      <p style="color: white;">Premium interiors with personalized designs, budget-friendly packages, and on-time delivery across Telangana, Andhra Pradesh & Banglore.</p>
       <button class="btn-primary" onclick="showPage('contact')">Book Free Site Visit</button>
       <button class="btn-outline" onclick="showPage('portfolio')">View Portfolio</button>
     </div>
@@ -745,7 +750,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
           <h2 class="section-title">Design With <em>Purpose</em></h2>
           <div class="section-line"></div>
         </div>
-        <p>KNR Interiors was born from a simple belief: every home deserves to be beautiful, and every family deserves a space that truly feels like their own. Founded by Jagadeeswar Reddy Karna, our studio has transformed hundreds of homes across Telangana,Andhra Pradesh and Banglore.</p>
+        <p>KNR Interiors was born from a simple belief: every home deserves to be beautiful, and every family deserves a space that truly feels like their own. Founded by Jagadeeswar Reddy Karna, our studio has transformed hundreds of homes across Telangana,Andhra Pradesh & Banglore.</p>
         <p>We blend timeless aesthetics with Vastu principles to create spaces that are not just visually stunning, but also filled with positive energy, peace, and harmony. Our approach is deeply personalized — we listen, we plan, and we deliver beyond expectations.</p>
         <p>From a 2BHK apartment to a luxury villa, every project receives the same level of dedication, craftsmanship, and care. Budget-friendly doesn't mean compromising on quality — it means smarter design.</p>
         <div class="trust-items">
@@ -775,79 +780,79 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
         <span class="service-icon">🏠</span>
         <h3>Premium Home Interiors</h3>
         <p>Complete residential transformation — modular kitchens, wardrobes, false ceilings, lighting, flooring, and custom furniture. Every detail considered, every space optimised for beauty and function.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">🔑</span>
         <h3>Turnkey Projects</h3>
         <p>Hassle-free end-to-end execution. We manage everything — materials, labour, timelines, and quality checks — so you receive a ready-to-move-in home without any stress.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">☕</span>
         <h3>Café & Commercial</h3>
         <p>Unique commercial spaces that reflect your brand identity. We design cafés, restaurants, and retail stores that attract customers and create memorable experiences.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">🎬</span>
         <h3>Home Theatre Setup</h3>
         <p>Experience cinema at home. We design acoustically treated, visually stunning home theatre rooms with premium AV integration and bespoke ambient lighting.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">✦</span>
         <h3>Vastu Consultation</h3>
         <p>Align your living spaces with ancient Vastu Shastra principles for peace, positivity, and prosperity. Our experts guide every design decision for holistic harmony.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">🪑</span>
         <h3>Custom Furniture</h3>
         <p>Bespoke furniture crafted to your exact specifications, using premium woods, finishes, and hardware. Unique pieces that define your space.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">🛠️</span>
         <h3>E-Service & Maintenance</h3>
         <p>Comprehensive after-sales support with regular maintenance, repairs, and service calls. Our dedicated team ensures your interiors remain perfect year-round.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">🪟</span>
         <h3>Window Curtains & Wallpapers</h3>
         <p>Custom-designed window curtains and premium wallpapers that elevate your interior aesthetics. Elegant solutions for every room and style preference.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">📍</span>
         <h3>Zebra Blinds</h3>
         <p>Modern zebra blinds with dual-layer sheer and solid stripes. Effortless light control, privacy, and contemporary style for living spaces and offices.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">🎨</span>
         <h3>PVC Blinds</h3>
         <p>Durable PVC blinds offering excellent moisture resistance, easy maintenance, and sleek modern aesthetics. Perfect for kitchens, bathrooms, and commercial spaces.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">⬆️</span>
         <h3>Roller Blinds</h3>
         <p>Clean, minimalist roller blinds with smooth operation and varied fabric options. Maximizes space, enhances décor, and provides superior light and privacy control.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">⚡</span>
         <h3>Motorized Curtains</h3>
         <p>Smart motorized curtains with remote or app control for ultimate convenience. Automated light management and contemporary luxury for your home.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
       <div class="service-card fade-up">
         <span class="service-icon">🎪</span>
         <h3>Customised Wallpapers</h3>
         <p>Bespoke wallpaper designs crafted to match your unique style and home décor. From classic patterns to modern designs, we bring your vision to life.</p>
-        <div class="service-arrow">Get Estimate →</div>
+        <div class="service-arrow" onclick="showPage('contact')">Get Estimate →</div>
       </div>
     </div>
     <div style="text-align:center;margin-top:3rem">
@@ -937,7 +942,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
           </div>
           <div class="contact-detail-text">
             <strong>Service Area</strong>
-            Telangana & Andhra Pradesh
+            Telangana, Andhra Pradesh & Banglore
           </div>
         </div>
 
@@ -1019,7 +1024,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
         <img src="https://cdn.jsdelivr.net/gh/nani986690/knr@main/file_000000002e38720895a1c2d061a7127b.png" alt="KNR Interiors logo" class="logo-img" style="filter: brightness(0) invert(1);">
       </a>
       <p style="font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.5); font-weight: 300; margin-top: 1rem;">
-        Elevating lifestyles through bespoke interior design. We blend Vastu harmony with modern aesthetics across Telangana,Andhra Pradesh Banglore.
+        Elevating lifestyles through bespoke interior design. We blend Vastu harmony with modern aesthetics across Telangana,Andhra Pradesh & Banglore.
       </p>
       <div style="margin-top: 2rem; display: flex; gap: 1rem;">
         <!-- Instagram -->
@@ -1071,7 +1076,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
         </div>
         <div style="display: flex; align-items: flex-start; gap: 10px;">
           <i data-lucide="map-pin" style="width: 14px; height: 14px; color: var(--brand-light); margin-top: 4px;"></i>
-          <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Telangana & Andhra Pradesh</span>
+          <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Telangana, Andhra Pradesh & Banglore</span>
         </div>
         <div style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
           <p style="color: var(--brand-light); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;">10 Years Service Warranty</p>
@@ -1094,7 +1099,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
         </iframe>
       </div>
       <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1rem; text-align: center;">
-        Serving Telangana & Andhra Pradesh
+        Serving Telangana, Andhra Pradesh & Banglore
       </p>
     </div>
   </div>
