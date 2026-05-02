@@ -999,7 +999,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;color:rgba(255,255,255,0.6)}
           <textarea placeholder="Tell us about your dream interior…"></textarea>
         </div>
 
-        <button class="btn-primary" style="width:100%; border:none; padding:1.2rem; border-radius: 0; margin-top: 1rem;" onclick="alert('Thank you! Jagadeeswar will contact you within 24 hours.')">
+        <button class="btn-primary" style="width:100%; border:none; padding:1.2rem; border-radius: 0; margin-top: 1rem;" onclick="sendToWhatsApp()">
           Send Message & Book Visit
         </button>
       </div>
@@ -1179,6 +1179,24 @@ document.addEventListener('DOMContentLoaded',function(){
     if(e.target===this) closeMenu();
   });
 });
+
+// ── WHATSAPP FORM SUBMIT ──────────────────────────────────────────────────
+function sendToWhatsApp() {
+  const form = document.querySelector('.contact-form');
+  const inputs = form.querySelectorAll('input, textarea');
+  const name = inputs[0].value.trim();
+  const phone = inputs[1].value.trim();
+  const city = inputs[2].value.trim();
+  const project = inputs[3].value.trim();
+  const message = inputs[4].value.trim();
+  if (!name || !phone) {
+    alert('Please fill in your name and phone number.');
+    return;
+  }
+  const text = `Hi, I am ${name} from ${city}. Phone: ${phone}. Project: ${project}. Message: ${message}`;
+  const url = `https://wa.me/919704378870?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+}
 
 // FADE UP OBSERVER
 function observeFadeUps(){
